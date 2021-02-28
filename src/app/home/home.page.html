@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="title">
+      Bolsa de valores
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Bolsa de valores</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+    <ion-button color="danger" (click)="goToOperation('sell')">VENDER</ion-button>
+    <ion-button color="primary" (click)="goToOperation('buy')">COMPRAR</ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title">Operation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    Operações
+    <ion-list padding *ngFor="let order of orders">
+      <ion-item>
+          Tipo: {{order.type === 'sell' ? 'venda' : 'compra'}}
+          Quantidade: {{order.qty}}
+          Valor: {{order.value}}
+      </ion-item>
+    </ion-list>
+    <div *ngIf="isCreatingOrder">
+      <!-- <ion-select placeholder="Selecione a ação da ordem" [(ngModel)]="order.type">
+        <ion-select-option value="sell">Vender</ion-select-option>
+        <ion-select-option value="buy">Comprar</ion-select-option>
+      </ion-select> -->
+      <ion-item>
+        <ion-label position="floating">Quantidade</ion-label>
+        <ion-input type="number" [(ngModel)]="order.qty"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Valor</ion-label>
+        <ion-input type="number" [(ngModel)]="order.value"></ion-input>
+      </ion-item>
+      <ion-button color="danger" (click)="cancelNewOrder()">CANCELAR</ion-button>
+      <ion-button color="primary" (click)="createOrder()">CRIAR ORDEM</ion-button>
+    </div>
+    <ion-button color="secondary" (click)="newOrder()" *ngIf="!isCreatingOrder">NOVA ORDEM</ion-button>
+    <br />
+    <ion-label>Você tem: {{ totalExchanges }} ações no valor de {{ exchangeValue }} cada.</ion-label>
+    <ion-label>Total de: {{ totalExchanges * exchangeValue }}.</ion-label>
+  </div>
+</ion-content>
